@@ -1,0 +1,30 @@
+# Core Libraries
+opencv-python==4.8.0.74
+Pillow==10.0.0
+numpy==1.24.3
+scipy==1.11.2
+
+# OCR
+paddleocr==2.7.0.3
+pytesseract==0.3.10
+
+# Object Detection
+torch==2.0.1
+torchvision==0.15.2
+ultralytics==8.0.200
+detectron2>=0.6
+
+# Translation
+transformers==4.32.1
+sentencepiece==0.1.99
+torch-hub
+
+# PDF & Image Processing
+pdf2image==1.16.3
+PyPDF2==3.0.1
+py7zr==0.20.6
+
+# Utilities
+requests==2.31.0
+tqdm==4.66.1
+python-dotenv==1.0.0
