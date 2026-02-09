@@ -1,0 +1,339 @@
+# ========== بيئة Python ==========
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# PEP 582
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# ========== IDE والمحررات ==========
+# VSCode
+.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# PyCharm
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Visual Studio
+.vs/
+*.sln
+*.suo
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Atom
+.atom/
+
+# Vim
+.vim/
+*.swp
+*.swo
+*~
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# ========== نظام التشغيل ==========
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+.directory
+
+# ========== البيانات والملفات الضخمة ==========
+# صور المدخلات
+data/
+!data/.gitkeep
+
+# النتائج
+output/
+!output/.gitkeep
+
+# النماذج المحملة مسبقاً
+models/*
+!models/.gitkeep
+
+# ملفات مؤقتة
+temp/
+tmp/
+*.tmp
+*.bak
+*.swp
+
+# ملفات النسخ الاحتياطية
+*.backup
+*.bk
+
+# ملفات الملفات المضغوطة (المستخرجة)
+extracted/
+
+# ملفات الفيديو
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.flv
+
+# ملفات الصوت
+*.mp3
+*.wav
+*.m4a
+
+# ملفات PDF الضخمة
+*.pdf
+
+# ملفات Pickle
+*.pkl
+*.pickle
+
+# ملفات NPZ
+*.npz
+
+# ملفات h5 (Keras/TensorFlow)
+*.h5
+
+# ملفات ONNX
+*.onnx
+
+# ملفات الوزن (weights)
+*.pth
+*.pt
+*.weights
+
+# ملفات النقاط المرجعية (checkpoints)
+checkpoints/
+*.ckpt
+*.checkpoint
+
+# ملفات السجل (logs)
+logs/
+*.log
+logfile.txt
+
+# ملفات الإحصائيات
+stats/
+metrics/
+
+# ملفات مؤقتة أخرى
+.cache/
+cache/
+__temp__/
+
+# ========== ملفات نظام البناء ==========
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# ========== ملفات الاختبار ==========
+.coverage
+.pytest_cache/
+.tox/
+htmlcov/
+
+# ملفات النتائج
+test_results/
+test_output/
+
+# ========== ملفات التكوين الحساسة ==========
+# مفاتيح API
+.env.local
+.env.*.local
+secrets.json
+config/secrets.py
+api_keys.txt
+
+# بيانات المستخدم
+user_data/
+credentials/
+
+# ملفات قاعدة البيانات
+*.db
+*.sqlite
+*.sqlite3
+
+# ملفات كلمات المرور
+passwords.txt
+.password
+
+# ملفات التوكن
+*.token
+tokens/
+
+# ========== ملفات المشروع الإضافية ==========
+# Minified files
+*.min.js
+*.min.css
+
+# تقارير التغطية
+coverage_report/
+
+# ملفات الإصدار
+release/
+
+# ملفات الترجمة
+translations/
+locale/
+
+# ملفات Vagrant
+.vagrant/
+Vagrantfile
+
+# ملفات Docker
+.dockerignore
+docker-compose.override.yml
+
+# ملفات البيانات الضخمة
+data_large/
+datasets/
+raw_data/
+
+# ملفات البحث والتطوير
+research/
+experiments/
+notes/
+
+# ملفات العمل الجاري
+work_in_progress/
+wip/
