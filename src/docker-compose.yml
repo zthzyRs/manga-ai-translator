@@ -1,0 +1,174 @@
+version: '3.8'
+
+# التعريف بالخدمات
+services:
+  # الخدمة الرئيسية - تطبيق ترجمة المانجا
+  manga-translator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: manga-translator-app
+    image: manga-ai-translator:latest
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+      - LOG_LEVEL=INFO
+      - DEVICE=cpu
+      # غيّر إلى gpu إذا كنت تستخدم GPU
+    volumes:
+      - ./data:/app/data
+      - ./output:/app/output
+      - ./config:/app/config
+    networks:
+      - manga-network
+    restart: unless-stopped
+    depends_on:
+      - redis
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys; sys.exit(0)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # خدمة Redis - للتخزين المؤقت
+  redis:
+    image: redis:7-alpine
+    container_name: manga-translator-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - manga-network
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # خدمة PostgreSQL - لقاعدة البيانات (اختياري)
+  postgres:
+    image: postgres:15-alpine
+    container_name: manga-translator-db
+    environment:
+      POSTGRES_USER: manga_user
+      POSTGRES_PASSWORD: manga_password
+      POSTGRES_DB: manga_translator
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - manga-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U manga_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # خدمة pgAdmin - لإدارة قاعدة البيانات (اختياري)
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: manga-translator-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@manga-translator.local
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    networks:
+      - manga-network
+    restart: unless-stopped
+    depends_on:
+      - postgres
+
+  # خدمة Jupyter - لتطوير وتجريب الكود
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    container_name: manga-translator-jupyter
+    ports:
+      - "8888:8888"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - JUPYTER_ENABLE_LAB=yes
+    volumes:
+      - ./notebooks:/app/notebooks
+      - ./data:/app/data
+      - ./src:/app/src
+      - ./config:/app/config
+    networks:
+      - manga-network
+    restart: unless-stopped
+    command: jupyter lab --ip=0.0.0.0 --allow-root --no-browser
+    depends_on:
+      - manga-translator
+
+  # خدمة الاختبارات
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: testing
+    container_name: manga-translator-tests
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./src:/app/src
+      - ./tests:/app/tests
+      - ./config:/app/config
+      - ./data:/app/data
+    networks:
+      - manga-network
+    depends_on:
+      - redis
+
+  # خدمة الفحص - لينت
+  lint:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: lint
+    container_name: manga-translator-lint
+    volumes:
+      - ./src:/app/src
+      - ./tests:/app/tests
+    networks:
+      - manga-network
+
+  # خدمة التوثيق
+  docs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: docs
+    container_name: manga-translator-docs
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./docs:/app/docs
+      - ./README.md:/app/README.md
+    networks:
+      - manga-network
+    restart: unless-stopped
+
+# تعريف الشبكات
+networks:
+  manga-network:
+    driver: bridge
+    name: manga-translator-network
+
+# تعريف الأقراص (Volumes)
+volumes:
+  redis-data:
+    name: manga-translator-redis-data
+  postgres-data:
+    name: manga-translator-postgres-data
