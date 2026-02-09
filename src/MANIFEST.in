@@ -1,0 +1,159 @@
+# تضمين ملفات البيانات
+
+# ملفات التوثيق
+include README.md
+include CHANGELOG.md
+include LICENSE
+include AUTHORS.md
+include CONTRIBUTING.md
+include CODE_OF_CONDUCT.md
+include SECURITY.md
+include ROADMAP.md
+
+# ملفات الإعدادات
+include setup.py
+include setup.cfg
+include pyproject.toml
+include pytest.ini
+include tox.ini
+include .editorconfig
+include .gitignore
+include MANIFEST.in
+
+# ملفات المتطلبات
+include requirements.txt
+include requirements-dev.txt
+
+# ملفات GitHub
+recursive-include .github *
+include .github/workflows/*.yml
+include .github/ISSUE_TEMPLATE/*.md
+include .github/PULL_REQUEST_TEMPLATE.md
+
+# ملفات Docker
+include Dockerfile
+include docker-compose.yml
+include .dockerignore
+
+# ملفات الاختبارات
+recursive-include tests *
+include tests/pytest.ini
+include tests/conftest.py
+
+# ملفات التكوين
+recursive-include config *
+include config/config.py
+include config/*.json
+include config/*.yaml
+include config/*.yml
+
+# ملفات البيانات
+recursive-include data *
+include data/.gitkeep
+
+# ملفات النماذج
+recursive-include models *
+include models/.gitkeep
+
+# ملفات التوثيق الإضافية
+recursive-include docs *
+include docs/*.md
+include docs/*.rst
+
+# ملفات المصدر الرئيسية
+recursive-include src *
+include src/**/*.py
+include src/**/*.json
+include src/**/*.yaml
+include src/**/*.yml
+
+# ملفات النصوص
+recursive-include locale *
+
+# تجاهل ملفات معينة
+exclude .git*
+exclude .github/workflows/test*.yml
+exclude .vscode
+exclude .idea
+exclude *.pyc
+exclude __pycache__
+exclude *.egg-info
+exclude dist
+exclude build
+exclude .tox
+exclude .pytest_cache
+exclude .mypy_cache
+exclude .coverage
+exclude htmlcov
+exclude *.log
+exclude venv
+exclude .venv
+exclude env
+exclude .env
+exclude *.tmp
+exclude *.swp
+exclude *.swo
+exclude *~
+
+# تضمين الملفات ذات الصيغ المحددة
+global-include *.py
+global-include *.md
+global-include *.txt
+global-include *.rst
+global-include *.cfg
+global-include *.ini
+global-include *.json
+global-include *.yaml
+global-include *.yml
+global-include *.toml
+global-include *.sh
+global-include *.bash
+global-include Dockerfile
+global-include docker-compose.yml
+global-include .dockerignore
+global-include .editorconfig
+global-include .gitignore
+global-include LICENSE
+global-include AUTHORS.md
+global-include CHANGELOG.md
+global-include README.md
+global-include CONTRIBUTING.md
+global-include CODE_OF_CONDUCT.md
+global-include SECURITY.md
+global-include ROADMAP.md
+
+# تضمين الملفات في المجلدات المحددة
+include setup.cfg
+include pyproject.toml
+
+# تضمين ملفات خاصة
+include NOTICE
+include CONTRIBUTORS.md
+
+# تضمين ملفات المشاريع
+include .pre-commit-config.yaml
+include .pre-commit-hooks.yaml
+
+# تضمين ملفات CI/CD
+include .github/workflows/*.yml
+include .github/dependabot.yml
+include .gitlab-ci.yml
+include .travis.yml
+include appveyor.yml
+include azure-pipelines.yml
+
+# تضمين ملفات إضافية للتوثيق
+include docs/Makefile
+include docs/conf.py
+include docs/index.rst
+include docs/source/*.rst
+
+# تضمين ملفات التخزين المؤقت
+exclude .cache
+exclude .pytest_cache
+exclude .mypy_cache
+exclude __pycache__
+exclude *.egg-info
+recursive-exclude . *.pyc
+recursive-exclude . *.pyo
+recursive-exclude . __pycache__
